@@ -3,7 +3,11 @@ import { RouterModule, Routes } from '@angular/router';
 import { CarComponent } from './components/car/car.component';
 import { CarDetailComponent } from './components/cardetail/cardetail.component';
 import { CustomerComponent } from './components/customer/customer.component';
+import { PaymentComponent } from './components/payment/payment.component';
+import { RentalDtoComponent } from './components/rental-dto/rental-dto.component';
 import { RentalComponent } from './components/rental/rental.component';
+
+
 
 const routes: Routes = [
   {path:"",pathMatch:"full",component:CarComponent},
@@ -14,8 +18,11 @@ const routes: Routes = [
   {path:"cardetail/:carId", component:CarDetailComponent},
   {path:"cars/color/:colorId",component:CarComponent},
   {path:"cars/color/:colorId/cardetail/:carId",component:CarDetailComponent},
-  {path:"rentals",component:RentalComponent},
-  {path:"customers",component:CustomerComponent}
+  {path:"customers",component:CustomerComponent},
+  {path:"cars/filter/:brandId/:colorId",component:CarComponent},
+  {path:"rental/:carId",component:RentalComponent},
+  {path:"rentalDtos",component:RentalDtoComponent},
+  {path:"payment/:rental",component:PaymentComponent},
 ];
 
 @NgModule({

@@ -8,6 +8,7 @@ export interface Car
     description:string;
     imageId:number;
     imagePath:string;
-    date:Date
+    date:Date;
+    status:boolean;
  
 }

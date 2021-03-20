@@ -1,5 +1,11 @@
+<div style="margin-top:10px;" class="mb-3">
+    <input type="text" [(ngModel)]="filterTextColor" class="form-control" id="filterTextColor" placeholder="renk ara">
+  </div>
+  <div *ngIf="filterTextColor" class="alert alert-success">
+    {{filterTextColor}} aradınız
+  </div>
 <ul class="list-group" style="margin: 5px;">
     <li routerLink="/cars" [class]="getAllColorClass()">TÜM RENKLER</li>
-    <li (click)="setCurrentColor(color)" routerLink="/cars/color/{{color.id}}"  [class]="getCurrentColorClass(color)" *ngFor="let color of colors">{{color.colorName}}</li>
+    <li (click)="setCurrentColor(color)" routerLink="/cars/color/{{color.id}}"  [class]="getCurrentColorClass(color)" *ngFor="let color of colors | filterColor:filterTextColor">{{color.colorName}}</li>
 </ul>
-<h5 *ngIf="currentColor">{{currentColor.colorName}},{{currentColor.id}} seçtiniz</h5>
+
