@@ -1,0 +1,14 @@
+<div class="card">
+    <div class="card-header"><h5 class="title">Marka Ekle</h5></div>
+    <div class="card-body">
+        <form [formGroup]="brandAddForm" >
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="brandId">Brand </span>
+                <input  type="text" class="form-control" id="brandName" formControlName="brandName" aria-describedby="basic-addon3">
+              </div>
+        </form>
+    </div>
+    <div class="card-header">
+        <button class="btn btn-primary" style="width: 100%;" (click)="add()">Ekle</button>
+    </div>
+</div>

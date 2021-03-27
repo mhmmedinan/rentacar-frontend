@@ -56,7 +56,7 @@ export class PaymentComponent implements OnInit {
 
       this.amountPayment = numberOfDays;
       if(this.amountPayment <= 0){
-        this.router.navigate(['/cars']);
+        this.router.navigate(['/home']);
         this.toastrService.error("Araç listesine yönlendiriliyorsunuz", "Hatalı işlem");
       }
     }
@@ -67,7 +67,7 @@ export class PaymentComponent implements OnInit {
   {
     this.paymentService.creditPayment(this.rental,this.amountPayment).subscribe(response=>
       {
-        this.router.navigate(['/cars']);
+        this.router.navigate(['/home']);
         this.toastrService.success(response.message.toString(), "İşlem Başarılı");
       })
   }

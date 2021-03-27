@@ -1,0 +1,15 @@
+<div class="card">
+    <div class="card-header"><h5 class="title">Renk Ekle</h5></div>
+    <div class="card-body">
+        <form [formGroup]="colorAddForm" >
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="colorId">Color </span>
+                <input  type="text" class="form-control" id="colorNama" formControlName="colorName" aria-describedby="basic-addon3">
+              </div>
+        </form>
+    </div>
+    <div class="card-header">
+        <button class="btn btn-primary" style="width: 100%;" (click)="add()">Ekle</button>
+    </div>
+</div>
+

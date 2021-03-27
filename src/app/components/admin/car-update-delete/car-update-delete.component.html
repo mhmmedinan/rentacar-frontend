@@ -1,0 +1,71 @@
+<div class="card">
+  <div class="card-header">Araç Güncelleme</div>
+  <div class="card-body">
+      <form [formGroup]="updateCarForm">
+          <div class="row mb-3" > 
+            <div class="col-6">
+              <label for="colorId">Color</label>
+              <select
+                formControlName="colorId"
+                id="colorId"
+                class="form-select mb-3"
+                aria-label="Default select example"
+              >
+                <option *ngFor="let color of colors" value="{{ color.id}}">
+                  {{ color.colorName }}
+                </option>
+              </select>
+            </div>
+    
+            <div class="col-6">
+              <label for="brandId">Brand</label>
+              <select
+                formControlName="brandId"
+                id="brandId"
+                class="form-select mb-3"
+                aria-label="Default select example"
+              >
+                <option *ngFor="let brand of brands" value="{{ brand.id }}">
+                  {{ brand.brandName }}
+                </option>
+              </select>
+            </div>
+          </div>
+         
+          <div class="mb-3">
+            <label for="modelYear">Model Year</label>
+            <input 
+            
+              type="number"
+              class="form-control"
+              id="modelYear"
+            
+              formControlName="modelYear"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="dailyPrice">Daily Price</label>
+            <input
+              type="number"
+              class="form-control"
+              id="dailyPrice"
+              
+              formControlName="dailyPrice"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="description">Description</label>
+            <input
+              type="text"
+              class="form-control"
+              id="description"
+             
+              formControlName="description"
+            />
+          </div>
+        </form>
+  </div>
+  <div class="card-header">
+      <button class="btn btn-primary" style="width: 100%;" (click)="update()">Güncelle</button>
+  </div>
+</div>

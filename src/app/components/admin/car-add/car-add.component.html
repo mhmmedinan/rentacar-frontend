@@ -1,0 +1,89 @@
+
+        <div class="card" >
+            <div class="card-header"><h5 class="title">Araç Ekle</h5></div>
+            <div class="card-body">
+                <form [formGroup]="carAddForm" >
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="brandId">Brand </span>
+                        <input  type="number" class="form-control" id="brandId" formControlName="brandId" aria-describedby="basic-addon3">
+                      </div>
+                  
+                  <div class="input-group mb-3">
+                    <input  type="number" class="form-control" id="colorId" formControlName="colorId" aria-describedby="basic-addon3">
+                    <span class="input-group-text" id="colorId">Color </span>
+                  </div>
+                  
+                 
+                  <div class="input-group mb-3">
+                    <span class="input-group-text" id="modelYear">Model Year</span>
+                    <input  type="number" class="form-control" id="modelYear" formControlName="modelYear" aria-describedby="basic-addon3">
+                  </div>
+                  
+                  <div class="input-group mb-3">
+                    <span class="input-group-text">Daily Price</span>
+                    <input type="number" class="form-control" id="dailyPrice" formControlName="dailyPrice" aria-label="Amount (to the nearest dollar)">
+                    <span class="input-group-text">₺</span>
+                  </div>
+                  
+                  
+                  
+                  <div class="input-group">
+                   
+                    <textarea class="form-control" id="description" formControlName="description" aria-label="With textarea"></textarea>
+                    <span class="input-group-text">Description</span>
+                  </div>
+                </form>
+            </div>
+            <div class="card-footer">
+                <button type="button" class="btn btn-success" (click)="add()">Ekle</button>
+                <button style="margin-left: 50px;" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                   Resim Ekle
+                  </button>
+            </div>
+        </div>
+   
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Resim Ekle </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="container" style="padding-top: 1%;">
+          <div class="row">
+              <div class="card">
+                  <div class="card-header">
+                      <h5 class="title"> Resim Ekle</h5>
+                  </div>
+                  <div class="card-body">
+                      <form [formGroup]="carImageAddForm">
+                          <div class="mb-3">
+                              <label for="carId">Araba Seçiniz</label>
+                              <select id="carId" class="form-select" aria-label="Default select example"
+                                  formControlName="carId">
+                                  <option [ngValue]="car.id" *ngFor="let car of cars">
+                                      {{car.brandName}} {{car.modelYear}} </option>
+                              </select>
+                          </div>
+                          <div class="mb-3">
+                              <label for="imageFile">Resim Seçin</label>
+                              <div class="form-group">
+                                  <input type="file" (change)="onFileChanged($event)" class="form-control" />
+                              </div>
+                          </div>
+                      </form>
+                  </div>
+                 
+              </div>
+          </div>
+      </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" (click)="addImage()"
+          >Ekle</button>
+        </div>
+      </div>
+    </div>
+  </div>

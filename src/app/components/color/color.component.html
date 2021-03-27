@@ -5,7 +5,7 @@
     {{filterTextColor}} aradınız
   </div>
 <ul class="list-group" style="margin: 5px;">
-    <li routerLink="/cars" [class]="getAllColorClass()">TÜM RENKLER</li>
-    <li (click)="setCurrentColor(color)" routerLink="/cars/color/{{color.id}}"  [class]="getCurrentColorClass(color)" *ngFor="let color of colors | filterColor:filterTextColor">{{color.colorName}}</li>
+    <li routerLink="/home" [class]="getAllColorClass()">TÜM RENKLER</li>
+    <li (click)="setCurrentColor(color)" routerLink="cars/color/{{color.id}}"  [class]="getCurrentColorClass(color)" *ngFor="let color of colors | filterColor:filterTextColor">{{color.colorName}}</li>
 </ul>
 

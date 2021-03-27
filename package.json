@@ -21,8 +21,11 @@
     "@angular/router": "~11.2.4",
     "@ng-bootstrap/ng-bootstrap": "^9.0.2",
     "bootstrap": "^5.0.0-beta2",
+    "bootstrap-icons": "^1.4.0",
     "jquery": "^3.6.0",
+    "ng2-file-upload": "^1.4.0",
     "ngx-toastr": "^13.2.1",
+    "popper.js": "^1.16.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.11.3"

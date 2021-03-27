@@ -9,6 +9,6 @@ export interface Car
     imageId:number;
     imagePath:string;
     date:Date;
-    status:boolean;
+    
  
 }
