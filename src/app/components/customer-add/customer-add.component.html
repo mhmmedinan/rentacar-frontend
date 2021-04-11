@@ -1,0 +1,21 @@
+<div class="card" style="margin-top: 10px;" >
+    <div class="card-header"><h5 class="title">Müşteri Ekle</h5></div>
+    <div class="card-body">
+        <form [formGroup]="customerAddForm" >
+          <div class="input-group mb-3">
+            <input  type="text" class="form-control" id="companyName" formControlName="companyName" aria-describedby="basic-addon3">
+            <span class="input-group-text" id="companyName">Company Name </span>
+          </div>
+          
+         
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="findeks">Findeks Point</span>
+            <input  type="number" class="form-control" id="findeks" formControlName="findeks" aria-describedby="basic-addon3">
+          </div>
+        </form>
+    </div>
+    <div class="card-footer">
+        <button type="button" class="btn btn-success" (click)="add()">Müşteri Ekle</button>
+    </div>
+</div>
+

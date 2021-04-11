@@ -32,66 +32,102 @@
   
   </div>
 
-
+<div class="card mt-4">
+  <div class="card-header text-center">
+    <strong>Kayıtlı Kredi Kartları</strong>
+  </div>
+  <div class="card-body">
+    <div class="row">
+      <select class="form-select" (change)="cardChange($event)" [(ngModel)]="creditCardId" aria-label="Default select example">
+        <option *ngFor="let card of creditCards" [ngValue]="card.id">{{card.fullName}} - {{card.number}}</option>                
+      </select>
+    </div>
+  </div>
+</div>
+  
   <div *ngFor="let car of carDetails" class="card mt-4">
     <div class="card-header text-center">
       <strong>Ödeme İşlemleri</strong>
     </div>
-    <div class="card-body">
-      <div class="row">
-        <div class="inputbox mt-3">
-          <span>Kart sahibinin adı soyadı</span>
-          <input
-            type="text"
-            name="name"
-            class="form-control"
-            required="required"
-          />
-        </div>
+    <form [formGroup]="paymentAddForm">
+      <div class="card-body">
         <div class="row">
-          <div class="col-md-6">
-            <div class="inputbox mt-3 mr-2">
-              <span>Kart numarası</span>
-              <input
-                type="text"
-                name="name"
-                class="form-control"
-                required="required"
-              />
-              <i class="fa fa-credit-card"></i>
-            </div>
+          <div class="inputbox mt-3">
+            <span>Kart sahibinin adı soyadı</span>
+            <input
+            formControlName="fullName"
+              type="text"
+              name="name"
+              class="form-control"
+              required="required"
+            />
           </div>
-          <div class="col-md-6">
-            <div class="d-flex flex-row">
+          <div class="row">
+            <div class="col-md-6">
               <div class="inputbox mt-3 mr-2">
-                <span>Son kullanım tarihi</span>
+                <span>Kart numarası</span>
                 <input
+                formControlName="number"
                   type="text"
                   name="name"
                   class="form-control"
                   required="required"
                 />
-              </div>
-              <div class="inputbox mt-3 mr-2">
-                <span>Güvenlik kodu</span>
-                <input
-                  type="text"
-                  name="name"
-                  class="form-control"
-                  required="required"
-                />
+                <i class="fa fa-credit-card"></i>
               </div>
             </div>
+            <div class="col-md-6">
+              <div class="d-flex flex-row">
+                <div class="inputbox mt-3 mr-2">
+                  <span>Son kullanım Ayı</span>
+                  <input
+                  formControlName="expirationMonth"
+                    type="text"
+                    name="name"
+                    class="form-control"
+                    required="required"
+                  />
+                </div>
+                
+                 
+                    <div class="inputbox mt-3 mr-2">
+                      <span>Son kullanım tarihi</span>
+                      <input
+                      formControlName="expirationYear"
+                        type="text"
+                        name="name"
+                        class="form-control"
+                        required="required"
+                      />
+                    </div>
+                <div class="inputbox mt-3 mr-2">
+                  <span>Güvenlik kodu</span>
+                  <input
+                  formControlName="ccv"
+                    type="text"
+                    name="name"
+                    class="form-control"
+                    required="required"
+                  />
+                </div>
+              
+            
           </div>
         </div>
+        
       </div>
-      
+      <div class="card-footer">
+        <div class="row">
+            <button (click)="creditPayment()" class="btn btn-success"><strong>{{car.dailyPrice * amountPayment |currency:"₺"}} </strong>Ödeme Yap</button>
+        
+        </div>
     </div>
-    <div class="card-footer">
-      <div class="row">
-          <button (click)="creditPayment()" class="btn btn-success"><strong>{{car.dailyPrice * amountPayment |currency:"₺"}} </strong>Ödeme Yap</button>
-      </div>
+    </div>
+  
   </div>
-  </div>
+  
+  
+    </form>
 
-</div>
+    <button (click)="creditCardAdd()" class="btn btn-success">Ekle</button>
+    

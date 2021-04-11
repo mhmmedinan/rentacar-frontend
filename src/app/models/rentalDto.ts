@@ -1,6 +1,7 @@
 export interface RentalDto
 {
     id:number;
+    userId:number;
     firstName:string;
     lastName:string;
     brandName:string;
@@ -9,4 +10,5 @@ export interface RentalDto
     rentDate:Date;
     returnDate:Date;
     dailyPrice:Date;
+    
 }

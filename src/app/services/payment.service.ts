@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { CreditCard } from '../models/creditCard';
+import { ListResponseModel } from '../models/listResponseModel';
 import { Rental } from '../models/rental';
 import { ResponseModel } from '../models/responseModel';
 
@@ -17,5 +19,17 @@ export class PaymentService {
     let newPath=this.apiUrl+"/rentals/paymentadd";
     rental.returnDate=undefined;
     return this.httpClient.post<ResponseModel>(newPath,{payment:{amount:amount},rental:rental})
+  }
+
+  add(card: CreditCard): Observable<ResponseModel> {
+    return this.httpClient.post<ResponseModel>(this.apiUrl + '/creditcards/add', card);
+  }
+
+  getCardByUserId(userId:number): Observable<ResponseModel> {
+    return this.httpClient.get<ResponseModel>(this.apiUrl + '/creditcards/getbyid?userId='+userId);
+  }  
+
+  getAllCustomerId(customerId:number): Observable<ListResponseModel<CreditCard>> {
+    return this.httpClient.get<ListResponseModel<CreditCard>>(this.apiUrl + '/creditcards/getallbyid?customerId='+customerId);
   }
 }

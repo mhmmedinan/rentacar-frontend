@@ -1,14 +1,19 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {HttpClientModule} from '@angular/common/http'
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http'
 import {FormsModule,ReactiveFormsModule} from '@angular/forms'
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations"
+import { SplitButtonModule } from 'primeng/splitbutton';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { CarouselModule } from 'primeng/carousel';
+import { DropdownModule } from 'primeng/dropdown';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrandComponent } from './components/brand/brand.component';
 import { ColorComponent } from './components/color/color.component';
-import { CustomerComponent } from './components/customer/customer.component';
+import { CustomerComponent } from './components/admin/customer/customer.component';
 import { CarComponent } from './components/car/car.component';
 import { NaviComponent } from './components/navi/navi.component';
 import { CarDetailComponent } from './components/cardetail/cardetail.component';
@@ -20,7 +25,7 @@ import { RentalComponent } from './components/rental/rental.component';
 import { PaymentComponent } from './components/payment/payment.component';
 
 import{ToastrModule} from "ngx-toastr";
-import { RentalDtoComponent } from './components/rental-dto/rental-dto.component';
+import { RentalDtoComponent } from './components/admin/rental-dto/rental-dto.component';
 import { HomeComponent } from './components/home/home.component';
 import { DashboardComponent } from './components/admin/dashboard/dashboard.component';
 import { CarAddComponent } from './components/admin/car-add/car-add.component';
@@ -34,6 +39,19 @@ import { BrandUpdateComponent } from './components/admin/brand-update/brand-upda
 import { ColorAddComponent } from './components/admin/color-add/color-add.component';
 import { ColorDetailsComponent } from './components/admin/color-details/color-details.component';
 import { ColorUpdateComponent } from './components/admin/color-update/color-update.component';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { DialogService, DynamicDialogModule } from 'primeng/dynamicdialog';
+import {LoginComponent} from './components/login-register/login/login.component'
+import { RegisterComponent } from './components/login-register/register/register.component';
+import { HomeRentComponent } from './components/home-rent/home-rent.component';
+import { UserRentalComponent } from './components/user-rental/user-rental.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { ChangePasswordComponent } from './components/change-password/change-password.component';
+import { CustomerAddComponent } from './components/customer-add/customer-add.component';
+import { CustomerListComponent } from './components/customer-list/customer-list.component';
+import { CustomerUpdateComponent } from './components/customer-update/customer-update.component';
+
+
 
 
 
@@ -65,6 +83,17 @@ import { ColorUpdateComponent } from './components/admin/color-update/color-upda
     ColorAddComponent,
     ColorDetailsComponent,
     ColorUpdateComponent,
+    RegisterComponent,
+    LoginComponent,
+    HomeRentComponent,
+    UserRentalComponent,
+    ProfileComponent,
+    ChangePasswordComponent,
+    CustomerAddComponent,
+    CustomerListComponent,
+    CustomerUpdateComponent,
+  
+    
     
     
     
@@ -76,13 +105,20 @@ import { ColorUpdateComponent } from './components/admin/color-update/color-upda
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
+    ConfirmDialogModule,
+    DropdownModule,
+    SplitButtonModule,
+    CarouselModule,
     NgbModule,
     ToastrModule.forRoot(
       {
         positionClass:"toast-bottom-right"
       })
   ],
-  providers: [],
+  providers: [{
+    provide:HTTP_INTERCEPTORS,useClass:AuthInterceptor,multi:true
+    
+  },DialogService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

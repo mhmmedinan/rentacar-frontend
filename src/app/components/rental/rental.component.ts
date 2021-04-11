@@ -1,10 +1,13 @@
+import { hasLifecycleHook } from '@angular/compiler/src/lifecycle_reflector';
 import { Component, OnInit,Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Car } from 'src/app/models/car';
 import { Customer } from 'src/app/models/customer';
 import { Rental } from 'src/app/models/rental';
+import { AuthService } from 'src/app/services/auth.service';
 import { CustomerService } from 'src/app/services/customer.service';
+import { FindeksService } from 'src/app/services/findeks.service';
 import { RentalService } from 'src/app/services/rental.service';
 
 @Component({
@@ -17,13 +20,21 @@ export class RentalComponent implements OnInit {
   customers:Customer[];
   rentDate:Date;
   returnDate:Date;
+  customer:Customer;
+  findeksLoad:boolean=true;
+  findeksError:boolean=true;
+  findeksMsg:string;
+  @Input() cars:Car[]
   @Input() car:Car;
 
-  constructor(private customerService:CustomerService,private activatedRoute:ActivatedRoute,private route:Router,private rentalService:RentalService,private toastrService:ToastrService) { }
+  constructor(private customerService:CustomerService,private activatedRoute:ActivatedRoute,private route:Router,private rentalService:RentalService,
+    private toastrService:ToastrService,private authService:AuthService,private findeksService:FindeksService) { }
 
   ngOnInit(): void {
-    this.getCustomers()
-  }
+ 
+        this.getCustomerUserId(this.authService.userId);
+       
+      }
 
   getCustomers()
   {
@@ -42,14 +53,43 @@ export class RentalComponent implements OnInit {
 
   addRental()
   {
+    
     let rental:Rental = 
     {
       rentDate :this.rentDate,
       returnDate:this.returnDate,
       carId:this.car.id,
-      customerId: parseInt(this.customerId.toString())
+      customerId: this.customerId
     }
-    this.route.navigate(['/payment/', JSON.stringify(rental)]);
+   
+     this.route.navigate(['/payment/', JSON.stringify(rental)]);
     this.toastrService.info("Ödeme sayfasına yönlendiriliyorsunuz...", "Ödeme İşlemleri");
+      }
+     
+      
+    
+  customerChange(event:any) {
+    this.findeksLoad=false;
+    this.findeksService.findeks(this.car.id,this.customerId).subscribe((response) => {
+       if (response.success) {
+        this.findeksLoad=true;
+       }
+       else{
+         this.findeksMsg=response.message;
+         this.findeksLoad=false;
+         this.findeksError=false;
+         this.toastrService.error(response.message);
+       } 
+    });
   }
+
+    
+  
+  getCustomerUserId(userId:number){
+    this.customerService.getCustomerUserId(userId).subscribe(response=>{
+      this.customers=response.data
+    })
+  }
+
+ 
 }

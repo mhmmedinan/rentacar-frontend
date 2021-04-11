@@ -16,7 +16,9 @@
           <h5 class="modal-title" id="exampleModalLabel">{{ car.brandName }} - {{ car.colorName }} | Aracı Kirala</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
+    
         <div class="modal-body">
+          
           <div class="form-group row mb-2">
             <label for="example-date-input" class="col-4 col-form-label"
               >Günlük Fiyat</label
@@ -35,12 +37,12 @@
               >Müşteri </label
             >
             <div class="col-8">
-              <select class="form-select" [(ngModel)]="customerId">
-                <option [value]="customer.id"
+              <select  [(ngModel)]="customerId" (change)="customerChange($event)"   class="form-select">
+                <option  [ngValue]="customer.id"
                   *ngFor="let customer of customers"
                 >
                   {{ customer.firstName }} {{ customer.lastName }} |
-                  {{ customer.companyName }}
+                  {{ customer.companyName }} {{customer.findeks}} 
                 </option>
               </select>
             </div>
@@ -76,7 +78,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
-          <button  (click)="addRental()" type="button" class="btn btn-primary">Kirala</button>
+          <button *ngIf="findeksLoad==true" (click)="addRental()" type="button" class="btn btn-primary">Kirala</button>
         </div>
       </div>
     </div>

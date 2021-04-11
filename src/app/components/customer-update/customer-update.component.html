@@ -1,0 +1,29 @@
+<div class="card" style="margin-top: 10px;">
+    <div class="card-header">Müşteri Güncelleme</div>
+    <div class="card-body">
+        <form [formGroup]="updateCustomerForm">
+            <div class="mb-3" > 
+              <label for="companyName">Company Name</label>
+              <input 
+                type="text"
+                class="form-control"
+                id="companyName"
+                formControlName="companyName"
+              />
+            </div>
+            <div class="mb-3" > 
+                <label for="companyName">Findeks Point</label>
+                <input 
+                  type="number"
+                  class="form-control"
+                  id="findeks"
+                  formControlName="findeks"
+                />
+              </div>
+            </form>
+    </div>
+    <div class="card-header">
+        <button class="btn btn-primary" style="width: 100%;" (click)="update()">Güncelle</button>
+    </div>
+  </div>
+  

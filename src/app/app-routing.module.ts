@@ -3,9 +3,9 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
 import { CarComponent } from './components/car/car.component';
 import { CarDetailComponent } from './components/cardetail/cardetail.component';
-import { CustomerComponent } from './components/customer/customer.component';
+import { CustomerComponent } from './components/admin/customer/customer.component';
 import { PaymentComponent } from './components/payment/payment.component';
-import { RentalDtoComponent } from './components/rental-dto/rental-dto.component';
+import { RentalDtoComponent } from './components/admin/rental-dto/rental-dto.component';
 import { RentalComponent } from './components/rental/rental.component';
 import { DashboardComponent } from './components/admin/dashboard/dashboard.component';
 import { CarAddComponent } from './components/admin/car-add/car-add.component';
@@ -17,13 +17,25 @@ import { BrandUpdateComponent } from './components/admin/brand-update/brand-upda
 import { ColorAddComponent } from './components/admin/color-add/color-add.component';
 import { ColorDetailsComponent } from './components/admin/color-details/color-details.component';
 import { ColorUpdateComponent } from './components/admin/color-update/color-update.component';
+import { LoginComponent } from './components/login-register/login/login.component';
+import { LoginGuard } from './guards/login.guard';
+import { AdminGuard } from './guards/admin.guard';
+import { HomeRentComponent } from './components/home-rent/home-rent.component';
+import { UserRentalComponent } from './components/user-rental/user-rental.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { CustomerAddComponent } from './components/customer-add/customer-add.component';
+import { CustomerListComponent } from './components/customer-list/customer-list.component';
+import { CustomerUpdateComponent } from './components/customer-update/customer-update.component';
 
 
 
 const routes: Routes = [
 
-  {path:"payment/:rental",component:PaymentComponent},
-  {path:"admin",component:DashboardComponent,children:[
+  {path:"payment/:rental",component:PaymentComponent,canActivate:[LoginGuard]},
+  {path:"home-rent",component:HomeRentComponent},
+
+  
+  {path:"admin",component:DashboardComponent,canActivate:[AdminGuard,LoginGuard], children:[
     {path:"car-add",pathMatch:"full",component:CarAddComponent},
     {path:"car-details",pathMatch:"full",component:CarDetailsComponent},
     {path:"car-details/car-update-delete/:carId",component:CarUpdateDeleteComponent},
@@ -33,6 +45,8 @@ const routes: Routes = [
     {path:"color-add",pathMatch:"full",component:ColorAddComponent},
     {path:"color-details",pathMatch:"full",component:ColorDetailsComponent},
     {path:"color-details/color-update/:colorId",component:ColorUpdateComponent},
+    {path:"rentalDto",component:RentalDtoComponent},
+    {path:"customer",component:CustomerComponent},
 
   ]}, 
   {path:"home",component:HomeComponent,children:[
@@ -41,14 +55,17 @@ const routes: Routes = [
     {path:"cars/brand",component:CarComponent},
     {path:"cars/brand/:brandId",component:CarComponent},
     {path:"cars/brand/:brandId/cardetail/:carId",component:CarDetailComponent},
-    {path:"cardetail/:carId", component:CarDetailComponent},
-    {path:"cars/cardetail/carId", component:CarDetailComponent },
+    {path:"cardetail/:carId", component:CarDetailComponent,canActivate:[LoginGuard]},
+    {path:"cars/cardetail/carId", component:CarDetailComponent,canActivate:[LoginGuard] },
     {path:"cars/color/:colorId",component:CarComponent},
     {path:"cars/color/:colorId/cardetail/:carId",component:CarDetailComponent},
-    {path:"customers",component:CustomerComponent},
     {path:"cars/filter/:brandId/:colorId",component:CarComponent},
     {path:"rental/:carId",component:RentalComponent},
-    {path:"rentalDtos",component:RentalDtoComponent},
+    {path:"userRentals",component:UserRentalComponent,canActivate:[LoginGuard]},
+    {path:"profile",component:ProfileComponent,canActivate:[LoginGuard]},
+    {path:"customer",component:CustomerAddComponent,canActivate:[LoginGuard]},
+    {path:"customer-list",component:CustomerListComponent,canActivate:[LoginGuard]},
+    {path:"customer-list/customer-update/:customerId",component:CustomerUpdateComponent,canActivate:[LoginGuard]},
      
   ]},
 ];
