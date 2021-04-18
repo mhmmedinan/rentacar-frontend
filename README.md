@@ -1,3 +1,12 @@
+<img src="https://github.com/mrm65/rentacar-frontend/blob/master/1.JPG" width="auto"> 
+<img src="https://github.com/mrm65/rentacar-frontend/blob/master/2.JPG" width="auto"> 
+<img src="https://github.com/mrm65/rentacar-frontend/blob/master/3.JPG" width="auto"> 
+<img src="https://github.com/mrm65/rentacar-frontend/blob/master/4.JPG" width="auto"> 
+<img src="https://github.com/mrm65/rentacar-frontend/blob/master/5.JPG" width="auto"> 
+<img src="https://github.com/mrm65/rentacar-frontend/blob/master/6.JPG" width="auto"> 
+<img src="https://github.com/mrm65/rentacar-frontend/blob/master/7.JPG" width="auto"> 
+<img src="https://github.com/mrm65/rentacar-frontend/blob/master/8.JPG" width="auto"> 
+<img src="https://github.com/mrm65/rentacar-frontend/blob/master/9.JPG" width="auto"> 
 # Rent
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.3.
@@ -27,12 +36,4 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
 
 
-<img src="https://github.com/mrm65/rentacar-frontend/blob/master/1.JPG" width="auto"> 
-<img src="https://github.com/mrm65/rentacar-frontend/blob/master/2.JPG" width="auto"> 
-<img src="https://github.com/mrm65/rentacar-frontend/blob/master/3.JPG" width="auto"> 
-<img src="https://github.com/mrm65/rentacar-frontend/blob/master/4.JPG" width="auto"> 
-<img src="https://github.com/mrm65/rentacar-frontend/blob/master/5.JPG" width="auto"> 
-<img src="https://github.com/mrm65/rentacar-frontend/blob/master/6.JPG" width="auto"> 
-<img src="https://github.com/mrm65/rentacar-frontend/blob/master/7.JPG" width="auto"> 
-<img src="https://github.com/mrm65/rentacar-frontend/blob/master/8.JPG" width="auto"> 
-<img src="https://github.com/mrm65/rentacar-frontend/blob/master/9.JPG" width="auto"> 
+
