@@ -6,7 +6,7 @@
 <img src="https://github.com/mrm65/rentacar-frontend/blob/master/6.JPG" width="auto"> 
 <img src="https://github.com/mrm65/rentacar-frontend/blob/master/7.JPG" width="auto"> 
 <img src="https://github.com/mrm65/rentacar-frontend/blob/master/8.JPG" width="auto"> 
-<img src="https://github.com/mrm65/rentacar-frontend/blob/master/9.JPG" width="auto"> 
+
 # Rent
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.3.
