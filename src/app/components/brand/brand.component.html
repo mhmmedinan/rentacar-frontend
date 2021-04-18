@@ -1,11 +1,21 @@
-<div style="margin-top:10px; "  class="mb-3">
+
+<div style="margin-top:10px;opacity: 0.8; "  class="mb-3" >
     <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText" placeholder="marka ara">
   </div>
-  <div *ngIf="filterText" class="alert alert-success">
+  <div *ngIf="filterText" class="alert alert-success" style="opacity: 0.8;">
     {{filterText}} aradınız
   </div>
-<ul class="list-group" >
+  
+<ul class="list-group" style="opacity: 0.8;" >
     <li routerLink="/home" [class]="getAllBrandClass()" >TÜM MARKALAR</li>
-    <li (click)="setCurrentBrand(brand)" routerLink="cars/brand/{{brand.id}}"  [class]="getCurrentBrandClass(brand)" *ngFor="let brand of brands | filterPipe:filterText">{{brand.brandName}}</li>
 </ul>
+
+<div class="mb-3" style="opacity: 0.8;">
+  <select class="form-select" size="5" aria-label="size 3 select example">
+      <option style="background-color:  rgb(252, 251, 245);" (click)="setCurrentBrand(brand)"
+      routerLink="cars/brand/{{brand.id}}" [class]="getCurrentBrandClass(brand)"
+      *ngFor="let brand of brands | filterPipe:filterText" value="1">{{brand.brandName}}</option>
+
+  </select>
+</div>
 

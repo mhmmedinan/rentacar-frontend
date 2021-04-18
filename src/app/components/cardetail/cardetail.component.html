@@ -1,4 +1,4 @@
-<ngb-carousel>
+<ngb-carousel style="opacity: 0.9;">
   <ng-template ngbSlide *ngFor ="let car of carImages">
       <div class="picsum-img-wrapper">
         <img  class="d-block w-100" style="width: 900px; height: 435px;" src="https://localhost:44367{{car.imagePath}}" >
@@ -8,7 +8,7 @@
 
 <br>
 
-<div class="card"  *ngFor ="let car of carDetails; let i = index">
+<div class="card"  *ngFor ="let car of carDetails; let i = index"  >
   <div class="card-body" *ngIf="i<1">
     <h5 class="card-title">{{car.brandName}} {{car.description}}</h5>
     <hr>

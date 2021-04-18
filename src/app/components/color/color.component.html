@@ -1,11 +1,17 @@
-<div style="margin-top:10px; " class="mb-3">
+<div style="margin-top:10px; opacity: 0.8; " class="mb-3">
     <input type="text" [(ngModel)]="filterTextColor" class="form-control" id="filterTextColor" placeholder="renk ara">
   </div>
-  <div *ngIf="filterTextColor" class="alert alert-success">
+  <div *ngIf="filterTextColor" class="alert alert-success" style="opacity: 0.8;">
     {{filterTextColor}} aradınız
   </div>
 <ul class="list-group" >
     <li routerLink="/home" [class]="getAllColorClass()">TÜM RENKLER</li>
-    <li (click)="setCurrentColor(color)" routerLink="cars/color/{{color.id}}"  [class]="getCurrentColorClass(color)" *ngFor="let color of colors | filterColor:filterTextColor">{{color.colorName}}</li>
 </ul>
+<div class="mb-3" style="opacity: 0.8;">
+  <select class="form-select" size="5" aria-label="size 3 select example">
+      <option style="background-color:  rgb(252, 251, 245);" (click)="setCurrentColor(color)"
+      routerLink="cars/color/{{color.id}}" [class]="getCurrentColorClass(color)"
+      *ngFor="let color of colors | filterColor:filterTextColor" value="1">{{color.colorName}}</option>
 
+  </select>
+</div>
